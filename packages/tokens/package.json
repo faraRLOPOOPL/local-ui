@@ -1,0 +1,16 @@
+{
+  "name": "@realist-ui/tokens",
+  "type": "module",
+  "files": ["dist", "src", "package.json", "README.md"],
+  "exports": { "./style.css": "./dist/style.css" },
+  "style": "dist/style.css",
+  "sideEffects": ["**/*.css"],
+  "scripts": {
+    "build:css": "tailwindcss -c ../../tailwind.config.cjs -i ./src/tw.css -o ./dist/style.css --minify",
+    "build": "pnpm build:css"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3", "postcss": "^8", "autoprefixer": "^10", "antd": "^5"
+  },
+  "peerDependencies": { "antd": "^5" }
+}

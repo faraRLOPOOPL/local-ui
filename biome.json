@@ -1,0 +1,65 @@
+﻿{
+  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+
+  "organizeImports": { "enabled": true },
+
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+
+      "complexity": {
+        "noExcessiveCognitiveComplexity": "warn",
+        "noForEach": "off"
+      },
+      "style": {
+        "noNonNullAssertion": "warn",
+        "useConst": "error",
+        "useTemplate": "warn"
+      },
+      "suspicious": {
+        "noExplicitAny": "warn",
+        "noArrayIndexKey": "warn"
+      },
+      "correctness": {
+        "useExhaustiveDependencies": "warn"
+      }
+    }
+  },
+
+  "formatter": {
+    "enabled": true,
+    "formatWithErrors": false,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 100,
+    "lineEnding": "lf"
+  },
+
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "jsxQuoteStyle": "double",
+      "trailingCommas": "es5",
+      "semicolons": "always",
+      "arrowParentheses": "always"
+    }
+  },
+
+  "json": { "formatter": { "enabled": true, "indentWidth": 2 } },
+
+  "files": {
+    "ignore": [
+      "node_modules",
+      "dist",
+      "build",
+      "coverage",
+      ".next",
+      ".turbo",
+      "*.min.js",
+      "*.min.css",
+      "**/tailwind.css",
+      "**/*.tailwind.css"
+    ]
+  }
+}

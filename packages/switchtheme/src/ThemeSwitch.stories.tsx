@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { ThemeSwitch } from '../dist/index.mjs';
+import { ThemeSwitch } from './index';
+import { useState } from 'react';
 
 // Токены подключите один раз в preview.ts сторибука / приложении:
 // import '@realist-ui/tokens/style.css';

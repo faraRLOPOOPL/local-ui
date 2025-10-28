@@ -1,12 +1,6 @@
 ﻿import React from 'react';
-// import '../packages/tokens/src/tokens.css';
-// import '../packages/tailwind/src/tailwind.css';
 import { ConfigProvider } from 'antd';
 import "../packages/tokens/src/tokens.css"
-
-// если ты хочешь, чтобы сторибук сам компилировал tailwind из src:
-
-// import { antdThemeTokens } from '../packages/tokens/src';
 
 export const decorators = [
   (Story: any) => (

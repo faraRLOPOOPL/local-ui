@@ -1,8 +1,6 @@
-import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { ArrowRightOutlined } from '@ant-design/icons';
-// ВАЖНО: импортируем из локального index.ts — он уже подхватит токены и tailwind.css
-import { Button } from '../dist/index.mjs';
+import { Button } from './index';
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',
@@ -32,7 +30,7 @@ export const WithIconRight: Story = {
   args: { rlType: 'primary', icon: <ArrowRightOutlined />, iconPosition: 'right', children: 'Next' },
 };
 export const IconOnly: Story = {
-  args: { rlType: 'primary', icon: <ArrowRightOutlined />, iconPosition: 'only', 'aria-label': 'Next' } as any,
+  args: { rlType: 'primary', icon: <ArrowRightOutlined />, iconPosition: 'only', 'aria-label': 'Next' },
 };
 export const Disabled: Story = {
   args: { rlType: 'primary', children: 'Disabled', disabled: true },

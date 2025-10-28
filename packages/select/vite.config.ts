@@ -1,29 +1,24 @@
 ﻿import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import dts from 'vite-plugin-dts';
+import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js';
 import path from 'node:path';
-import tailwindcss from 'tailwindcss';
-import autoprefixer from 'autoprefixer';
 
 export default defineConfig({
-  plugins: [react(), dts({ entryRoot: path.resolve(__dirname, 'src'), outDir: 'dist' })],
-  css: {
-    postcss: {
-      plugins: [
-        tailwindcss({ config: path.resolve(__dirname, '../../tailwind.config.cjs') }),
-        autoprefixer()
-      ]
-    }
-  },
+  plugins: [
+    react(),
+    cssInjectedByJsPlugin(),
+    dts({ entryRoot: path.resolve(__dirname, 'src'), outDir: 'dist' })
+  ],
   build: {
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
       name: 'RealistUISelect',
-      formats: ['es', 'cjs'],
-      fileName: (f) => (f === 'es' ? 'index.mjs' : 'index.cjs')
+      formats: ['es'],
+      fileName: () => 'index.mjs'
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'react/jsx-runtime']
+      external: ['react', 'react-dom', 'react/jsx-runtime', 'antd']
     },
     sourcemap: true,
     emptyOutDir: true

@@ -1,0 +1,14 @@
+{
+  "name": "@realist-ui/tokens",
+  "version": "0.0.1",
+  "type": "module",
+  "files": ["dist", "package.json", "README.md"],
+  "exports": {
+    "./style.css": "./dist/style.css"
+  },
+  "sideEffects": ["**/*.css"],
+  "scripts": {
+    "build": "shx rm -rf dist && shx mkdir -p dist && shx cp src/tokens.css dist/style.css"
+  },
+  "devDependencies": { "shx": "^0.3.4" }
+}

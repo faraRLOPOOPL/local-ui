@@ -26,16 +26,16 @@ const SIZE: Record<RLButtonSize, { base: string; only: string; icon: string; tex
 
 // Общие сбросы визуальных эффектов AntD
 const COMMON =
-  'rl-inline-flex rl-items-center rl-justify-center rl-font-medium rl-leading-none rl-select-none rl-whitespace-nowrap rl-align-middle ' +
+  'rl-inline-flex rl-items-center rl-justify-center rl-leading-none rl-select-none rl-whitespace-nowrap rl-align-middle ' +
   'rl-shadow-none hover:rl-shadow-none active:rl-shadow-none focus:rl-shadow-none focus-visible:rl-shadow-none ' +
   'focus:rl-ring-0 focus-visible:rl-ring-0 rl-outline-none focus:rl-outline-none focus-visible:rl-outline-none ' +
-  'active:rl-translate-y-0';
+  'active:rl-translate-y-0 rl-font-rubik';
 
 // Варианты (у всех, кроме secondary, бордеров нет)
 const VARIANT: Record<RLButtonType, string> = {
   primary:  'rl-bg-indigo-60 rl-text-staticwhite-10 rl-border-0 hover:rl-bg-indigo-70 active:rl-bg-indigo-80 disabled:rl-bg-neutral-15 disabled:rl-text-neutral-50',
-  secondary:'rl-bg-neutral-0 rl-text-indigo-60 rl-border rl-border-indigo-40 hover:rl-bg-neutral-5 hover:rl-border-indigo-50 active:rl-bg-neutral-10 active:rl-border-indigo-60 disabled:rl-text-neutral-50 disabled:rl-border-neutral-20 disabled:rl-bg-neutral-10',
-  text:     'rl-bg-transparent rl-text-indigo-60 rl-border-0 hover:rl-bg-indigo-10 active:rl-bg-indigo-20 disabled:rl-text-neutral-40',
+  secondary:'rl-bg-white rl-text-neutral-60 rl-border-1 rl-border-neutral-30 hover:rl-text-indigo-40 hover:rl-border-indigo-40 active:rl-text-indigo-60 active:rl-border-indigo-60 disabled:rl-text-neutral-50 disabled:rl-border-neutral-20',
+  text:     'rl-bg-transparent rl-text-indigo-60 rl-border-0 hover:rl-bg-indigo-10 active:rl-bg-indigo-30 disabled:rl-text-neutral-40',
   success:  'rl-bg-success-60 rl-text-staticwhite-10 rl-border-0 hover:rl-bg-success-70 active:rl-bg-success-80 disabled:rl-bg-neutral-15 disabled:rl-text-neutral-50',
   error:    'rl-bg-error-60 rl-text-staticwhite-10 rl-border-0 hover:rl-bg-error-70 active:rl-bg-error-80 disabled:rl-bg-neutral-15 disabled:rl-text-neutral-50',
 };

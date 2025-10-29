@@ -122,6 +122,9 @@ module.exports = {
     },
 
     extend: {
+      fontFamily: {
+        rubik: 'var(--rl-font)',   
+      },
       borderRadius: {
         rl: '12px',
       },

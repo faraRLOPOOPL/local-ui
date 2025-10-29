@@ -57,15 +57,7 @@ export const ThemeSwitch = React.forwardRef<AntSwitchRef, RLSwitchThemeProps>(fu
       // иконки ант
       checkedChildren={<SunFilled className="rl-text-neutral-00" />}
       unCheckedChildren={<MoonFilled className="rl-text-neutral-20" />}
-      // // фиксируем габариты/форму корня свитча утилитами — масштаб меняет всё синхронно
-      // rootClassName={cx(
-      //   'rl-inline-flex rl-items-center rl-justify-center rl-w-12 rl-h-6 rl-rounded-full rl-origin-left rl-px-1',
-      //   sz.scale,
-      //   disabled && 'rl-opacity-60',
-      //   'focus:rl-outline-none focus-visible:rl-outline-none',
-      //   className
-      // )}
-      // фон трека только инлайном (никаких селекторов)
+
       style={{ backgroundColor: trackBg }}
     />
   );

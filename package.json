@@ -11,6 +11,7 @@
     "check": "biome check .",
     "fix": "biome check --write .",
     "build": "pnpm -r run build",
+    "build:storybook": "storybook build",
     "pack:all": "node scripts/pack-all.js"
   },
   "keywords": [],

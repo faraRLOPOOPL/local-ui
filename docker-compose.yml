@@ -1,0 +1,11 @@
+services:
+  storybook:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    container_name: realist-ui-storybook
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production

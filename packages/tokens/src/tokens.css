@@ -95,6 +95,22 @@
   --rl-color-modalbkge-10: rgb(239, 241, 251);
   --rl-color-indigobkg-10: rgb(30, 95, 139);
   --rl-color-electricbkg-10: rgb(44, 33, 204);
+  
+  /* disable */
+  --rl-color-disable-bkg: rgb(224, 224, 224); /* #E0E0E0 */
+  --rl-color-disable:     rgb(150, 150, 151); /* #969697 */
+
+  /* Opacity scale on Neutral-90 (#1C232A) */
+  --rl-color-opacity-05: rgba(28, 35, 42, 0.05);
+  --rl-color-opacity-10: rgba(28, 35, 42, 0.10);
+  --rl-color-opacity-20: rgba(28, 35, 42, 0.20);
+  --rl-color-opacity-30: rgba(28, 35, 42, 0.30);
+  --rl-color-opacity-40: rgba(28, 35, 42, 0.40);
+  --rl-color-opacity-50: rgba(28, 35, 42, 0.50);
+  --rl-color-opacity-60: rgba(28, 35, 42, 0.60);
+  --rl-color-opacity-70: rgba(28, 35, 42, 0.70);
+  --rl-color-opacity-80: rgba(28, 35, 42, 0.80);
+  --rl-color-opacity-90: rgba(28, 35, 42, 0.90);
 
     --rl-font-size-hl1: 72px;  --rl-line-hl1: 80px;
   --rl-font-size-hl2: 56px;  --rl-line-hl2: 64px;

@@ -7,7 +7,10 @@ export type RLButtonType = 'primary' | 'secondary' | 'text' | 'success' | 'error
 export type RLButtonSize = 'xl' | 'l' | 'm' | 's';
 export type RLButtonIconPosition = 'none' | 'left' | 'right' | 'only';
 
-export type RLButtonProps = Omit<AntButtonProps, 'type' | 'size' | 'icon'> & {
+export type RLButtonProps = Omit<
+  AntButtonProps,
+  'type' | 'size' | 'icon' | 'iconPosition' // ← добавили 'iconPosition'
+> & {
   rlType?: RLButtonType;
   sizeDs?: RLButtonSize;
   icon?: React.ReactNode;

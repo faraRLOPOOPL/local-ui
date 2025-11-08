@@ -28,7 +28,7 @@ const log = {
   header: (msg) => console.log(`${colors.cyan}${colors.bright}${msg}${colors.reset}`),
 };
 
-const packages = ['tokens', 'button', 'input', 'modal', 'select', 'switchtheme'];
+const packages = ['tokens', 'button', 'input', 'modal', 'select', 'switchtheme', 'dropdown'];
 
 function exec(command, options = {}) {
   try {

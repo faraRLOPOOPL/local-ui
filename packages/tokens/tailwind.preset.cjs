@@ -119,6 +119,24 @@ module.exports = {
         10: 'var(--rl-color-staticwhite-10)',
         20: 'var(--rl-color-staticwhite-20)',
       },
+
+      // Modal backgrounds
+      modalbkgw: {
+        10: 'var(--rl-color-modalbkgw-10)',
+      },
+
+      modalbkge: {
+        10: 'var(--rl-color-modalbkge-10)',
+      },
+
+      // Disable
+      disable: {
+        bkg: 'var(--rl-color-disable-bkg)',
+        text: 'var(--rl-color-disable)',
+      },
+
+      // White
+      white: 'rgb(255, 255, 255)',
     },
 
     extend: {

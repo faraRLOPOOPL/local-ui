@@ -70,7 +70,7 @@ export const Input = React.forwardRef<InputRef, RLInputProps>(function RLInput(
   const hasTopBar = Boolean(label) || hasLink;
 
   return (
-    <div className={cn('rl-block', width == null && 'rl-w-full')} style={styleWidth}>
+    <div className={cn('rl-block rl-font-rubik', width == null && 'rl-w-full')} style={styleWidth}>
       {/* top-bar: label слева, ссылка справа */}
       {hasTopBar && (
         <div className="rl-mb-1 rl-flex rl-items-center rl-justify-between">

@@ -9,8 +9,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: 'src/index.ts',
-      formats: ['es', 'cjs'],
-      fileName: (fmt) => `index.${fmt === 'es' ? 'mjs' : 'cjs'}`
+      formats: ['es'],
+      fileName: () => 'index.mjs'
     },
     rollupOptions: {
       external: ['react', 'react-dom', 'react/jsx-runtime', 'antd', '@ant-design/icons']

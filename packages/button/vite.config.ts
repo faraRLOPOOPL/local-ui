@@ -8,8 +8,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: 'src/index.ts',
-      formats: ['es','cjs'],
-      fileName: (format) => `index.${format === 'es' ? 'mjs' : 'cjs'}`,
+      formats: ['es'],
+      fileName: () => 'index.mjs',
       name: 'RealistUIButton',
     },
     rollupOptions: {

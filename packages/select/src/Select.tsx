@@ -1,4 +1,3 @@
-import React from 'react';
 import { Select as AntSelect, type SelectProps as AntSelectProps } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import { cx } from '../../utils/cx';

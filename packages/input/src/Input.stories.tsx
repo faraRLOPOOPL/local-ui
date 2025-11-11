@@ -1,7 +1,6 @@
-import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { SearchOutlined } from '@ant-design/icons';
-import { Input } from '../dist/index.mjs';
+import { Input } from './index';
 
 const meta: Meta<typeof Input> = {
   title: 'Components/Input',

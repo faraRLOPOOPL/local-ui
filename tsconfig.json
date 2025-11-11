@@ -6,7 +6,16 @@
     "moduleResolution": "Bundler",
     "jsx": "react-jsx",
     "strict": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@realist-ui/button": ["./packages/button/src"],
+      "@realist-ui/input": ["./packages/input/src"],
+      "@realist-ui/select": ["./packages/select/src"],
+      "@realist-ui/modal": ["./packages/modal/src"],
+      "@realist-ui/switchtheme": ["./packages/switchtheme/src"],
+      "@realist-ui/tokens": ["./packages/tokens/src"]
+    }
   },
   "exclude": ["dist", "node_modules"]
 }

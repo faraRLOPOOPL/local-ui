@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Modal } from '../dist/index.mjs';
+import { Modal } from './index';
+import { useState } from 'react';
+import { Button } from '@realist-ui/button';
 
 // В preview.ts сторибука подключите токены один раз:
 // import '@realist-ui/tokens/style.css';
@@ -72,12 +73,12 @@ export const ControlledOpen: Story = {
     const [open, setOpen] = useState(false);
     return (
       <div className="rl-space-y-4">
-        <button
-          className="rl-rounded-rl rl-border rl-border-solid rl-border-neutral-20 rl-px-4 rl-py-2"
+        <Button
+          rlType="primary"
           onClick={() => setOpen(true)}
         >
           Открыть модалку
-        </button>
+        </Button>
         <Modal
           open={open}
           onCancel={() => setOpen(false)}

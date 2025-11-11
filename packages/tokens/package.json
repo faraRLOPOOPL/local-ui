@@ -2,9 +2,10 @@
   "name": "@realist-ui/tokens",
   "version": "0.0.1",
   "type": "module",
-  "files": ["dist", "package.json", "README.md"],
+  "files": ["dist", "tailwind.preset.cjs", "package.json", "README.md"],
   "exports": {
-    "./style.css": "./dist/style.css"
+    "./style.css": "./dist/style.css",
+    "./tailwind": "./tailwind.preset.cjs"
   },
   "sideEffects": ["**/*.css"],
   "scripts": {

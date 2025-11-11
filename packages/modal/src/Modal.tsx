@@ -1,4 +1,3 @@
-import React from 'react';
 import { Modal as AntModal, type ModalProps as AntModalProps } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 
@@ -48,19 +47,10 @@ export const Modal: React.FC<RLModalProps> = ({
       footer={null}
       /** переключатель крестика */
       closable={showClose}
-      styles={{
-        content: {
-          borderRadius: '12px',
-          background: 'var(--rl-color-neutral-05)',
-          boxShadow: '0 8px 30px rgba(0,0,0,0.08)',
-        },
-        header: {
-          textAlign: 'center',
-          borderBottom: 'none',
-          background: 'transparent',
-          padding: '16px 20px 0',
-        },
-        body: { padding: '20px' },
+      classNames={{
+        content: 'rl-rounded-rl rl-bg-neutral-5 rl-shadow-lg',
+        header: 'rl-text-center rl-border-none rl-bg-transparent rl-px-5 rl-pt-4 rl-pb-0',
+        body: 'rl-p-5',
       }}
       title={
         label ? (

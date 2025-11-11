@@ -57,7 +57,6 @@ export const ThemeSwitch = React.forwardRef<AntSwitchRef, RLSwitchThemeProps>(fu
       // иконки ант
       checkedChildren={<SunFilled className="rl-text-neutral-00" />}
       unCheckedChildren={<MoonFilled className="rl-text-neutral-20" />}
-
       style={{ backgroundColor: trackBg }}
     />
   );

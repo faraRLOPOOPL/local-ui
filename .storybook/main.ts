@@ -10,12 +10,13 @@ const config: StorybookConfig = {
     if (!config.resolve) config.resolve = {}
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@realist-ui/button': resolve(__dirname, '../packages/button/src'),
-      '@realist-ui/input': resolve(__dirname, '../packages/input/src'),
-      '@realist-ui/select': resolve(__dirname, '../packages/select/src'),
-      '@realist-ui/modal': resolve(__dirname, '../packages/modal/src'),
-      '@realist-ui/switchtheme': resolve(__dirname, '../packages/switchtheme/src'),
-      '@realist-ui/tokens': resolve(__dirname, '../packages/tokens/src'),
+      '@realist-ui/button': resolve(import.meta.dirname, '../packages/button/src'),
+      '@realist-ui/input': resolve(import.meta.dirname, '../packages/input/src'),
+      '@realist-ui/select': resolve(import.meta.dirname, '../packages/select/src'),
+      '@realist-ui/modal': resolve(import.meta.dirname, '../packages/modal/src'),
+      '@realist-ui/switchtheme': resolve(import.meta.dirname, '../packages/switchtheme/src'),
+      '@realist-ui/dataTable': resolve(import.meta.dirname, '../packages/dataTable/src'),
+      '@realist-ui/tokens': resolve(import.meta.dirname, '../packages/tokens/src'),
     }
 
     return config

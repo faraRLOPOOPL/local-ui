@@ -22,7 +22,7 @@ Write-Host ""
 Write-Host "[2/3] Packing all packages..." -ForegroundColor Blue
 Write-Host ""
 
-$packages = @("tokens", "button", "input", "modal", "select", "switchtheme")
+$packages = @("design-system", "button", "input", "modal", "select", "switchtheme", "dropdown", "tabs", "checkbox")
 
 foreach ($pkg in $packages) {
     Write-Host "Packing @realist-ui/$pkg..." -ForegroundColor Yellow

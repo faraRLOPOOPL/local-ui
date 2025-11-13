@@ -1,0 +1,23 @@
+/**
+ * Rubik Font Family
+ * Usage: font-family: 'Rubik', sans-serif;
+ */
+
+@font-face {
+  font-family: 'Rubik';
+  src: url('./rubik.ttf') format('truetype');
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/*
+ * Note: The Rubik.ttf file includes multiple weights (300-900).
+ * You can use font-weight in CSS to access different weights:
+ * - font-weight: 300 (Light)
+ * - font-weight: 400 (Regular)
+ * - font-weight: 500 (Medium)
+ * - font-weight: 600 (Semi Bold)
+ * - font-weight: 700 (Bold)
+ * - font-weight: 900 (Black)
+ */

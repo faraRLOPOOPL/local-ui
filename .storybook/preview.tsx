@@ -1,6 +1,7 @@
 ﻿import React from 'react';
 import { ConfigProvider } from 'antd';
-import "../packages/tokens/src/tokens.css"
+import '../packages/design-system/src/tokens.css';
+import '../packages/design-system/src/fonts/fonts.css';
 
 export const decorators = [
   (Story: any) => (

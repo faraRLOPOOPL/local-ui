@@ -1,0 +1,6 @@
+src/**/*.ts
+!src/**/*.d.ts
+tsconfig.json
+.gitignore
+*.tgz
+node_modules

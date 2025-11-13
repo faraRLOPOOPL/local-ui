@@ -32,7 +32,7 @@ echo ""
 echo -e "${BLUE}[2/3] Packing all packages...${NC}"
 echo ""
 
-packages=("tokens" "button" "input" "modal" "select" "switchtheme" "dropdown")
+packages=("design-system" "button" "input" "modal" "select" "switchtheme" "dropdown" "tabs" "checkbox")
 
 for pkg in "${packages[@]}"; do
     echo -e "${YELLOW}Packing @realist-ui/${pkg}...${NC}"

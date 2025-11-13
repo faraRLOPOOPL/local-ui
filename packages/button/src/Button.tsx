@@ -36,11 +36,11 @@ const COMMON =
 
 // Варианты (у всех, кроме secondary, бордеров нет)
 const VARIANT: Record<RLButtonType, string> = {
-  primary:  'rl-bg-indigo-60 rl-text-staticwhite-10 rl-border-0 hover:rl-bg-indigo-70 active:rl-bg-indigo-80 disabled:rl-bg-neutral-15 disabled:rl-text-neutral-50',
-  secondary:'rl-bg-white rl-text-neutral-60 rl-border-1 rl-border-neutral-30 hover:rl-text-indigo-40 hover:rl-border-indigo-40 active:rl-text-indigo-60 active:rl-border-indigo-60 disabled:rl-text-neutral-50 disabled:rl-border-neutral-20',
-  text:     'rl-bg-transparent rl-text-indigo-60 rl-border-0 hover:rl-bg-indigo-10 active:rl-bg-indigo-30 disabled:rl-text-neutral-40',
-  success:  'rl-bg-success-60 rl-text-staticwhite-10 rl-border-0 hover:rl-bg-success-70 active:rl-bg-success-80 disabled:rl-bg-neutral-15 disabled:rl-text-neutral-50',
-  error:    'rl-bg-error-60 rl-text-staticwhite-10 rl-border-0 hover:rl-bg-error-70 active:rl-bg-error-80 disabled:rl-bg-neutral-15 disabled:rl-text-neutral-50',
+  primary:  'rl-bg-indigo-60 rl-text-staticwhite-10 rl-border-0 hover:rl-bg-indigo-70 active:rl-bg-indigo-80 disabled:rl-bg-disable-bkg disabled:rl-text-disable-text disabled:rl-border-0',
+  secondary:'rl-bg-white rl-text-neutral-60 rl-border rl-border-neutral-30 hover:rl-text-indigo-40 hover:rl-border-indigo-40 active:rl-text-indigo-60 active:rl-border-indigo-60 disabled:rl-bg-disable-bkg disabled:rl-text-disable-text disabled:rl-border-0',
+  text:     'rl-bg-transparent rl-text-indigo-60 rl-border-0 hover:rl-bg-indigo-10 active:rl-bg-indigo-30 disabled:rl-bg-disable-bkg disabled:rl-text-disable-text disabled:rl-border-0',
+  success:  'rl-bg-success-60 rl-text-staticwhite-10 rl-border-0 hover:rl-bg-success-70 active:rl-bg-success-80 disabled:rl-bg-disable-bkg disabled:rl-text-disable-text disabled:rl-border-0',
+  error:    'rl-bg-error-60 rl-text-staticwhite-10 rl-border-0 hover:rl-bg-error-70 active:rl-bg-error-80 disabled:rl-bg-disable-bkg disabled:rl-text-disable-text disabled:rl-border-0',
 };
 
 export const Button = React.forwardRef<HTMLButtonElement, RLButtonProps>(function RLButton(

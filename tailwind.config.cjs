@@ -1,6 +1,6 @@
 module.exports = {
-  // Используем shared preset из @realist-ui/tokens
-  presets: [require('./packages/tokens/tailwind.preset.cjs')],
+  // Используем shared preset из @realist-ui/design-system
+  presets: [require('./packages/design-system/tailwind.preset.cjs')],
 
   // Content для Storybook - сканируем все компоненты и stories
   content: [

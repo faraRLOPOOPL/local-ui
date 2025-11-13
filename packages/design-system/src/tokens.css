@@ -1,4 +1,16 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* @font-face{
+  font-family: "Rubik";
+  src: url("./media/Rubik.ttf") format("truetype");
+  font-weight: 100 200 400 500 600 900;
+  font-style: normal;
+  font-display: swap;
+} */
+
+/* tokens.css — Realist UI (LIGHT, rgb values) */
 
 :root {
   --rl-font: 'Rubik', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -147,6 +159,7 @@
   --rl-radius-14: 14px;
   --rl-radius-24: 24px;
   --rl-radius-32: 32px;
+  --rl-radius-z: 9999px;
 
 
   /* Семантические ярлыки (для удобства) */
@@ -254,16 +267,16 @@
   --rl-color-disable: rgb(150, 150, 151);
 
   /* ========= Surface Opacity (white over dark) ========= */
-  --rl-color-sopacity-05: rgba(255, 255, 255, 0.05);
-  --rl-color-sopacity-10: rgba(255, 255, 255, 0.10);
-  --rl-color-sopacity-20: rgba(255, 255, 255, 0.20);
-  --rl-color-sopacity-30: rgba(255, 255, 255, 0.30);
-  --rl-color-sopacity-40: rgba(255, 255, 255, 0.40);
-  --rl-color-sopacity-50: rgba(255, 255, 255, 0.50);
-  --rl-color-sopacity-60: rgba(255, 255, 255, 0.60);
-  --rl-color-sopacity-70: rgba(255, 255, 255, 0.70);
-  --rl-color-sopacity-80: rgba(255, 255, 255, 0.80);
-  --rl-color-sopacity-90: rgba(255, 255, 255, 0.90);
+  --rl-color-opacity-05: rgba(255, 255, 255, 0.05);
+  --rl-color-opacity-10: rgba(255, 255, 255, 0.10);
+  --rl-color-opacity-20: rgba(255, 255, 255, 0.20);
+  --rl-color-opacity-30: rgba(255, 255, 255, 0.30);
+  --rl-color-opacity-40: rgba(255, 255, 255, 0.40);
+  --rl-color-opacity-50: rgba(255, 255, 255, 0.50);
+  --rl-color-opacity-60: rgba(255, 255, 255, 0.60);
+  --rl-color-opacity-70: rgba(255, 255, 255, 0.70);
+  --rl-color-opacity-80: rgba(255, 255, 255, 0.80);
+  --rl-color-opacity-90: rgba(255, 255, 255, 0.90);
 
   
     --rl-font-size-hl1: 72px;  --rl-line-hl1: 80px;
@@ -297,6 +310,10 @@
   --rl-font-size-button2: 14px; --rl-line-button2: 20px;
 
     /* ========= Radius ========= */
+  --rl-radius-4: 4px;
+  --rl-radius-6: 6px;
+  --rl-radius-8: 8px;
+  --rl-radius-10: 10px;
   --rl-radius-12: 12px;
   --rl-radius-14: 14px;
   --rl-radius-24: 24px;
@@ -306,4 +323,11 @@
   /* Семантические ярлыки (для удобства) */
   --rl-font-size-body: var(--rl-font-size-text1-l);
   --rl-line-body: var(--rl-line-text1-l);
+}
+
+body {
+  margin: 0;
+  font-family: var(--rl-font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

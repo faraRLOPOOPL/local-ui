@@ -22,11 +22,14 @@
     "react": "^18 || ^19",
     "react-dom": "^18 || ^19",
     "antd": "^5",
-    "@ant-design/icons": "^6"
+    "@ant-design/icons": "^6",
+    "@realist-ui/design-system": "*"
   },
 
+
+
   "devDependencies": {
-    "@realist-ui/tokens": "workspace:*",
+    "@realist-ui/design-system": "workspace:*",
     "@vitejs/plugin-react": "^4",
     "autoprefixer": "^10",
     "postcss": "^8",

@@ -15,7 +15,7 @@ const config: StorybookConfig = {
       '@realist-ui/select': resolve(__dirname, '../packages/select/src'),
       '@realist-ui/modal': resolve(__dirname, '../packages/modal/src'),
       '@realist-ui/switchtheme': resolve(__dirname, '../packages/switchtheme/src'),
-      '@realist-ui/tokens': resolve(__dirname, '../packages/tokens/src'),
+      '@realist-ui/design-system': resolve(__dirname, '../packages/design-system/src'),
     }
 
     return config

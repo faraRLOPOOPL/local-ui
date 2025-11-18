@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { DataTable } from './index';
-import { ColDef } from 'ag-grid-community';
+import { type ColDef } from 'ag-grid-community';
 import React from 'react';
 
 const meta: Meta<typeof DataTable> = {

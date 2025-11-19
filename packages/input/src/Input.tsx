@@ -96,7 +96,7 @@ export const Input = React.forwardRef<InputRef, RLInputProps>(function RLInput(
           'rl-flex rl-items-center rl-rounded-12 rl-overflow-hidden',
           disabled ? 'rl-bg-disable-bkg rl-border-0' : 'rl-bg-neutral-0 rl-border rl-border-solid',
           !disabled && (error ? 'rl-border-error-60' : 'rl-border-neutral-20'),
-          !disabled && 'hover:rl-cursor-text focus-within:rl-border-electric-50 focus-within:rl-shadow-none',
+          !disabled && 'hover:rl-cursor-text focus-within:rl-border-2 focus-within:rl-border-electric-50 focus-within:rl-shadow-none',
           sz.wrapper, sz.gap,
           disabled && 'rl-pointer-events-none',
           className

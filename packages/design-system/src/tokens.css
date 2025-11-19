@@ -155,6 +155,10 @@
   --rl-font-size-button2: 14px; --rl-line-button2: 20px;
 
     /* ========= Radius ========= */
+    --rl-radius-4: 4px;
+  --rl-radius-6: 6px;
+  --rl-radius-8: 8px;
+  --rl-radius-10: 10px;
   --rl-radius-12: 12px;
   --rl-radius-14: 14px;
   --rl-radius-24: 24px;

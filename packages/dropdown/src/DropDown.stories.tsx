@@ -1,12 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { DownOutlined, UserOutlined, SettingOutlined, LogoutOutlined } from '@ant-design/icons';
+import { DownOutlined, UserOutlined, SettingOutlined, LogoutOutlined, BellOutlined, HeartOutlined, StarOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
-import { DropDown } from './index';
+import { DropDown } from './DropDown';
 
 const meta: Meta<typeof DropDown> = {
   title: 'Components/DropDown',
   component: DropDown,
-  parameters: { controls: { expanded: true } },
+  parameters: {
+    controls: { expanded: true },
+    layout: 'centered'
+  },
+  tags: ['autodocs'],
 };
 export default meta;
 
@@ -15,27 +19,48 @@ type Story = StoryObj<typeof DropDown>;
 export const Default: Story = {
   args: {
     items: [
-      { key: '1', label: 'Пункт меню 1', onClick: () => console.log('Item 1 clicked') },
-      { key: '2', label: 'Пункт меню 2', onClick: () => console.log('Item 2 clicked') },
-      { key: '3', label: 'Пункт меню 3', onClick: () => console.log('Item 3 clicked') },
+      { key: '1', label: 'Профиль пользователя', onClick: () => console.log('Profile clicked') },
+      { key: '2', label: 'Настройки системы', onClick: () => console.log('Settings clicked') },
+      { key: '3', label: 'Выход из аккаунта', onClick: () => console.log('Logout clicked') },
     ],
     trigger: (
-      <Button>
-        Меню <DownOutlined />
+      <Button type="primary">
+        Открыть меню <DownOutlined />
       </Button>
     ),
   },
 };
 
-export const WithIcons: Story = {
+export const WithIconsLeft: Story = {
   args: {
     items: [
-      { key: '1', label: 'Профиль', iconLeft: <UserOutlined />, onClick: () => console.log('Profile') },
-      { key: '2', label: 'Настройки', iconLeft: <SettingOutlined />, onClick: () => console.log('Settings') },
-      { key: '3', label: 'Выход', iconLeft: <LogoutOutlined />, onClick: () => console.log('Logout') },
+      {
+        key: '1',
+        label: 'Профиль',
+        iconLeft: <UserOutlined />,
+        onClick: () => console.log('Profile')
+      },
+      {
+        key: '2',
+        label: 'Настройки',
+        iconLeft: <SettingOutlined />,
+        onClick: () => console.log('Settings')
+      },
+      {
+        key: '3',
+        label: 'Уведомления',
+        iconLeft: <BellOutlined />,
+        onClick: () => console.log('Notifications')
+      },
+      {
+        key: '4',
+        label: 'Выход',
+        iconLeft: <LogoutOutlined />,
+        onClick: () => console.log('Logout')
+      },
     ],
     trigger: (
-      <Button>
+      <Button type="default">
         Действия <DownOutlined />
       </Button>
     ),
@@ -47,45 +72,67 @@ export const WithCaptions: Story = {
     items: [
       {
         key: '1',
-        label: 'Профиль',
-        caption: 'Просмотр и редактирование профиля',
+        label: 'Мой профиль',
+        caption: 'Просмотр и редактирование личной информации',
         iconLeft: <UserOutlined />,
         onClick: () => console.log('Profile')
       },
       {
         key: '2',
-        label: 'Настройки',
-        caption: 'Настройки приложения',
+        label: 'Настройки приложения',
+        caption: 'Управление параметрами и конфигурацией',
         iconLeft: <SettingOutlined />,
         onClick: () => console.log('Settings')
       },
       {
         key: '3',
+        label: 'Уведомления',
+        caption: 'Настройка оповещений и подписок',
+        iconLeft: <BellOutlined />,
+        onClick: () => console.log('Notifications')
+      },
+      {
+        key: '4',
         label: 'Выход',
-        caption: 'Выход из аккаунта',
+        caption: 'Завершить текущий сеанс работы',
         iconLeft: <LogoutOutlined />,
         onClick: () => console.log('Logout')
       },
     ],
-    width: 280,
+    width: 320,
     trigger: (
-      <Button>
+      <Button type="primary" size="large">
         Меню пользователя <DownOutlined />
       </Button>
     ),
   },
 };
 
-export const WithRightIcons: Story = {
+export const WithIconsRight: Story = {
   args: {
     items: [
-      { key: '1', label: 'Пункт 1', iconRight: <DownOutlined />, onClick: () => console.log('Item 1') },
-      { key: '2', label: 'Пункт 2', iconRight: <DownOutlined />, onClick: () => console.log('Item 2') },
-      { key: '3', label: 'Пункт 3', iconRight: <DownOutlined />, onClick: () => console.log('Item 3') },
+      {
+        key: '1',
+        label: 'Раскрыть подменю',
+        iconRight: <DownOutlined />,
+        onClick: () => console.log('Expand 1')
+      },
+      {
+        key: '2',
+        label: 'Ещё опции',
+        iconRight: <DownOutlined />,
+        onClick: () => console.log('Expand 2')
+      },
+      {
+        key: '3',
+        label: 'Дополнительно',
+        iconRight: <DownOutlined />,
+        onClick: () => console.log('Expand 3')
+      },
     ],
     trigger: (
       <Button>
-        Меню <DownOutlined />
+        С иконками справа <DownOutlined />
       </Button>
     ),
   },
@@ -96,45 +143,78 @@ export const WithBothIcons: Story = {
     items: [
       {
         key: '1',
-        label: 'Профиль',
-        iconLeft: <UserOutlined />,
-        iconRight: <DownOutlined />,
-        onClick: () => console.log('Profile')
+        label: 'Избранное',
+        caption: 'Управление избранными элементами',
+        iconLeft: <HeartOutlined />,
+        iconRight: <StarOutlined />,
+        onClick: () => console.log('Favorites')
       },
       {
         key: '2',
-        label: 'Настройки',
-        iconLeft: <SettingOutlined />,
-        iconRight: <DownOutlined />,
-        onClick: () => console.log('Settings')
+        label: 'Профиль',
+        caption: 'Настройки профиля и аккаунта',
+        iconLeft: <UserOutlined />,
+        iconRight: <SettingOutlined />,
+        onClick: () => console.log('Profile')
       },
       {
         key: '3',
-        label: 'Выход',
-        iconLeft: <LogoutOutlined />,
+        label: 'Уведомления',
+        caption: 'Центр уведомлений и оповещений',
+        iconLeft: <BellOutlined />,
         iconRight: <DownOutlined />,
-        onClick: () => console.log('Logout')
+        onClick: () => console.log('Notifications')
       },
     ],
+    width: 340,
     trigger: (
-      <Button>
-        Меню <DownOutlined />
+      <Button type="primary">
+        Иконки с обеих сторон <DownOutlined />
       </Button>
     ),
   },
 };
 
-export const WithDisabled: Story = {
+export const WithDisabledItems: Story = {
   args: {
     items: [
-      { key: '1', label: 'Активный пункт', onClick: () => console.log('Active') },
-      { key: '2', label: 'Отключённый пункт', disabled: true },
-      { key: '3', label: 'Ещё активный', onClick: () => console.log('Active 2') },
-      { key: '4', label: 'Тоже отключён', disabled: true },
+      {
+        key: '1',
+        label: 'Активный пункт',
+        iconLeft: <UserOutlined />,
+        onClick: () => console.log('Active 1')
+      },
+      {
+        key: '2',
+        label: 'Отключённый пункт',
+        caption: 'Этот пункт недоступен',
+        iconLeft: <SettingOutlined />,
+        disabled: true
+      },
+      {
+        key: '3',
+        label: 'Ещё активный',
+        iconLeft: <BellOutlined />,
+        onClick: () => console.log('Active 2')
+      },
+      {
+        key: '4',
+        label: 'Тоже отключён',
+        caption: 'Недостаточно прав доступа',
+        iconLeft: <LogoutOutlined />,
+        disabled: true
+      },
+      {
+        key: '5',
+        label: 'Доступный пункт',
+        iconLeft: <StarOutlined />,
+        onClick: () => console.log('Active 3')
+      },
     ],
+    width: 280,
     trigger: (
       <Button>
-        Меню <DownOutlined />
+        С отключёнными пунктами <DownOutlined />
       </Button>
     ),
   },
@@ -143,14 +223,30 @@ export const WithDisabled: Story = {
 export const CustomWidth: Story = {
   args: {
     items: [
-      { key: '1', label: 'Пункт меню 1', onClick: () => console.log('Item 1') },
-      { key: '2', label: 'Пункт меню 2', onClick: () => console.log('Item 2') },
-      { key: '3', label: 'Пункт меню 3', onClick: () => console.log('Item 3') },
+      {
+        key: '1',
+        label: 'Широкий пункт меню с длинным текстом',
+        iconLeft: <UserOutlined />,
+        onClick: () => console.log('Item 1')
+      },
+      {
+        key: '2',
+        label: 'Ещё один широкий пункт',
+        caption: 'С подробным описанием что делает этот пункт меню',
+        iconLeft: <SettingOutlined />,
+        onClick: () => console.log('Item 2')
+      },
+      {
+        key: '3',
+        label: 'Третий пункт',
+        iconLeft: <BellOutlined />,
+        onClick: () => console.log('Item 3')
+      },
     ],
-    width: 300,
+    width: 400,
     trigger: (
-      <Button>
-        Широкое меню <DownOutlined />
+      <Button type="primary" size="large">
+        Широкое меню (400px) <DownOutlined />
       </Button>
     ),
   },
@@ -159,20 +255,83 @@ export const CustomWidth: Story = {
 export const WithMaxHeight: Story = {
   args: {
     items: [
-      { key: '1', label: 'Пункт 1', onClick: () => console.log('Item 1') },
-      { key: '2', label: 'Пункт 2', onClick: () => console.log('Item 2') },
-      { key: '3', label: 'Пункт 3', onClick: () => console.log('Item 3') },
-      { key: '4', label: 'Пункт 4', onClick: () => console.log('Item 4') },
-      { key: '5', label: 'Пункт 5', onClick: () => console.log('Item 5') },
-      { key: '6', label: 'Пункт 6', onClick: () => console.log('Item 6') },
-      { key: '7', label: 'Пункт 7', onClick: () => console.log('Item 7') },
-      { key: '8', label: 'Пункт 8', onClick: () => console.log('Item 8') },
+      { key: '1', label: 'Пункт меню 1', iconLeft: <UserOutlined />, onClick: () => console.log('Item 1') },
+      { key: '2', label: 'Пункт меню 2', iconLeft: <SettingOutlined />, onClick: () => console.log('Item 2') },
+      { key: '3', label: 'Пункт меню 3', iconLeft: <BellOutlined />, onClick: () => console.log('Item 3') },
+      { key: '4', label: 'Пункт меню 4', iconLeft: <HeartOutlined />, onClick: () => console.log('Item 4') },
+      { key: '5', label: 'Пункт меню 5', iconLeft: <StarOutlined />, onClick: () => console.log('Item 5') },
+      { key: '6', label: 'Пункт меню 6', iconLeft: <UserOutlined />, onClick: () => console.log('Item 6') },
+      { key: '7', label: 'Пункт меню 7', iconLeft: <SettingOutlined />, onClick: () => console.log('Item 7') },
+      { key: '8', label: 'Пункт меню 8', iconLeft: <BellOutlined />, onClick: () => console.log('Item 8') },
+      { key: '9', label: 'Пункт меню 9', iconLeft: <HeartOutlined />, onClick: () => console.log('Item 9') },
+      { key: '10', label: 'Пункт меню 10', iconLeft: <StarOutlined />, onClick: () => console.log('Item 10') },
     ],
-    maxHeight: 200,
+    maxHeight: 300,
+    width: 280,
     trigger: (
-      <Button>
+      <Button type="primary">
         Меню с прокруткой <DownOutlined />
       </Button>
     ),
+  },
+};
+
+export const ComplexExample: Story = {
+  args: {
+    items: [
+      {
+        key: '1',
+        label: 'Александр Иванов',
+        caption: 'alexander.ivanov@example.com',
+        iconLeft: <UserOutlined />,
+        iconRight: <SettingOutlined />,
+        onClick: () => console.log('User profile')
+      },
+      {
+        key: '2',
+        label: 'Уведомления',
+        caption: 'У вас 5 новых уведомлений',
+        iconLeft: <BellOutlined />,
+        onClick: () => console.log('Notifications')
+      },
+      {
+        key: '3',
+        label: 'Избранное',
+        caption: 'Сохранённые элементы и закладки',
+        iconLeft: <HeartOutlined />,
+        onClick: () => console.log('Favorites')
+      },
+      {
+        key: '4',
+        label: 'Настройки',
+        caption: 'Недоступно в демо режиме',
+        iconLeft: <SettingOutlined />,
+        disabled: true
+      },
+      {
+        key: '5',
+        label: 'Выйти из аккаунта',
+        caption: 'Завершить текущую сессию',
+        iconLeft: <LogoutOutlined />,
+        onClick: () => console.log('Logout')
+      },
+    ],
+    width: 360,
+    trigger: (
+      <Button type="primary" size="large" style={{ width: 200 }}>
+        Меню пользователя <DownOutlined />
+      </Button>
+    ),
+  },
+};
+
+export const MinimalExample: Story = {
+  args: {
+    items: [
+      { key: '1', label: 'Действие 1', onClick: () => console.log('Action 1') },
+      { key: '2', label: 'Действие 2', onClick: () => console.log('Action 2') },
+      { key: '3', label: 'Действие 3', onClick: () => console.log('Action 3') },
+    ],
+    trigger: <Button>Простое меню</Button>,
   },
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import './tailwind.css';
+import { Dropdown as AntDropdown, type DropdownProps as AntDropdownProps } from 'antd';
 
 const cn = (...a: Array<string | false | null | undefined>) => a.filter(Boolean).join(' ');
 
@@ -13,152 +13,146 @@ export interface RLDropDownMenuItem {
   onClick?: () => void;
 }
 
-export type RLDropDownProps = {
+export interface RLDropDownProps extends Omit<AntDropdownProps, 'menu' | 'dropdownRender' | 'trigger'> {
   items: RLDropDownMenuItem[];
-  width?: number;
-  maxHeight?: number;
   trigger?: React.ReactNode;
-  open?: boolean;
-  onOpenChange?: (open: boolean) => void;
-};
+  width?: number | string;
+  maxHeight?: number | string;
+}
 
-/**
- * DropDown меню с поддержкой:
- * - Основной текст (neutral-80, text2-l, font-weight 500, Rubik)
- * - Caption под текстом (neutral-60, caption1, font-weight 400)
- * - Иконки слева и справа (neutral-60)
- * - Состояния: default (white), hover (indigo-10), active (electric-10), disabled (disable-bkg)
- * - Padding: 4px 8px 6px 8px
- * - Border-bottom: 1px solid neutral-10
- */
-export const DropDown = React.forwardRef<HTMLDivElement, RLDropDownProps>(function RLDropDown(
-  { items, width = 200, maxHeight, trigger, open, onOpenChange },
-  ref
-) {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const dropdownRef = React.useRef<HTMLDivElement>(null);
-
-  const isControlled = open !== undefined;
-  const actualOpen = isControlled ? open : isOpen;
-
-  const handleToggle = () => {
-    const newState = !actualOpen;
-    if (!isControlled) {
-      setIsOpen(newState);
+const DropDownItem: React.FC<{ item: RLDropDownMenuItem }> = ({ item }) => {
+  const handleClick = () => {
+    if (!item.disabled && item.onClick) {
+      item.onClick();
     }
-    onOpenChange?.(newState);
   };
-
-  const handleItemClick = (item: RLDropDownMenuItem) => {
-    if (item.disabled) return;
-    item.onClick?.();
-    if (!isControlled) {
-      setIsOpen(false);
-    }
-    onOpenChange?.(false);
-  };
-
-  // Закрытие при клике вне компонента
-  React.useEffect(() => {
-    if (!actualOpen) return;
-
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        if (!isControlled) {
-          setIsOpen(false);
-        }
-        onOpenChange?.(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [actualOpen, isControlled, onOpenChange]);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' || e.key === ' ') {
+    if (!item.disabled && item.onClick && (e.key === 'Enter' || e.key === ' ')) {
       e.preventDefault();
-      handleToggle();
-    }
-  };
-
-  const handleItemKeyDown = (e: React.KeyboardEvent, item: RLDropDownMenuItem) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      handleItemClick(item);
+      item.onClick();
     }
   };
 
   return (
-    <div ref={dropdownRef} className="rl-relative rl-inline-block">
-      <button
-        onClick={handleToggle}
-        onKeyDown={handleKeyDown}
-        className="rl-border-0 rl-bg-transparent rl-p-0 rl-cursor-pointer"
-        type="button"
-      >
-        {trigger}
-      </button>
-
-      {actualOpen && (
-        <div
-          ref={ref}
-          className="rl-absolute rl-z-50 rl-mt-1 rl-bg-white rl-rounded-rl rl-shadow-lg rl-overflow-hidden"
-          style={{
-            width: `${width}px`,
-            ...(maxHeight && { maxHeight: `${maxHeight}px` }),
-          }}
-          role="menu"
+    <div
+      role="menuitem"
+      tabIndex={item.disabled ? -1 : 0}
+      className={cn(
+        'rl-flex rl-items-start rl-gap-2 rl-cursor-pointer rl-transition-colors',
+        item.disabled
+          ? 'rl-bg-disable-bkg rl-cursor-not-allowed'
+          : 'rl-bg-white hover:rl-bg-indigo-10 active:rl-bg-electric-10'
+      )}
+      onClick={handleClick}
+      onKeyDown={handleKeyDown}
+      style={{
+        padding: '4px 8px 6px 8px',
+      }}
+    >
+      {item.iconLeft && (
+        <span
+          className={cn(
+            'rl-flex-shrink-0 rl-mt-0.5',
+            item.disabled ? 'rl-text-disable-text' : 'rl-text-neutral-60'
+          )}
         >
-          <div className="rl-overflow-y-auto" style={{ maxHeight: 'inherit' }}>
-            {items.map((item, index) => (
-              <div
-                key={item.key}
-                role="menuitem"
-                tabIndex={item.disabled ? -1 : 0}
-                aria-disabled={item.disabled}
-                onClick={() => handleItemClick(item)}
-                onKeyDown={(e) => handleItemKeyDown(e, item)}
-                className={cn(
-                  'rl-flex rl-items-start rl-gap-2 rl-transition-colors rl-duration-200',
-                  item.disabled
-                    ? 'rl-bg-disable-bkg rl-opacity-60 rl-cursor-not-allowed'
-                    : 'rl-bg-white hover:rl-bg-indigo-10 active:rl-bg-electric-10 rl-cursor-pointer'
-                )}
-                style={{
-                  padding: '4px 8px 6px 8px',
-                  ...(index !== items.length - 1 && {
-                    borderBottom: '1px solid var(--rl-color-neutral-10)',
-                  }),
-                }}
-              >
-                {item.iconLeft && (
-                  <span className="rl-flex-shrink-0 rl-text-neutral-60 rl-pt-1" aria-hidden>
-                    {item.iconLeft}
-                  </span>
-                )}
-                <div className="rl-flex-1 rl-min-w-0">
-                  <div className="rl-text-neutral-80 rl-text-text2-l rl-font-medium rl-font-rubik">
-                    {item.label}
-                  </div>
-                  {item.caption && (
-                    <div className="rl-text-neutral-60 rl-text-caption1 rl-font-normal rl-font-rubik rl-mt-0.5">
-                      {item.caption}
-                    </div>
-                  )}
-                </div>
-                {item.iconRight && (
-                  <span className="rl-flex-shrink-0 rl-text-neutral-60 rl-pt-1" aria-hidden>
-                    {item.iconRight}
-                  </span>
-                )}
-              </div>
-            ))}
-          </div>
+          {item.iconLeft}
+        </span>
+      )}
+
+      <div className="rl-flex-1 rl-min-w-0">
+        <div
+          className={cn(
+            'rl-text-text2-l rl-font-medium',
+            item.disabled ? 'rl-text-disable-text' : 'rl-text-neutral-80'
+          )}
+        >
+          {item.label}
         </div>
+        {item.caption && (
+          <div
+            className={cn(
+              'rl-text-caption1 rl-font-normal rl-mt-0.5',
+              item.disabled ? 'rl-text-disable-text' : 'rl-text-neutral-60'
+            )}
+          >
+            {item.caption}
+          </div>
+        )}
+      </div>
+
+      {item.iconRight && (
+        <span
+          className={cn(
+            'rl-flex-shrink-0 rl-mt-0.5',
+            item.disabled ? 'rl-text-disable-text' : 'rl-text-neutral-60'
+          )}
+        >
+          {item.iconRight}
+        </span>
       )}
     </div>
   );
-});
+};
+
+export const DropDown: React.FC<RLDropDownProps> = ({
+  items,
+  trigger,
+  width,
+  maxHeight,
+  ...antdProps
+}) => {
+  const containerStyle: React.CSSProperties = {};
+
+  if (width !== undefined) {
+    containerStyle.width = typeof width === 'number' ? `${width}px` : width;
+  }
+
+  if (maxHeight !== undefined) {
+    containerStyle.maxHeight = typeof maxHeight === 'number' ? `${maxHeight}px` : maxHeight;
+    containerStyle.overflowY = 'auto';
+  }
+
+  const dropdownRender = () => (
+    <div
+      className="rl-bg-white rl-rounded-12 rl-shadow-lg rl-py-2 rl-font-rubik"
+      style={containerStyle}
+    >
+      {items.map((item, index) => {
+        const isLastItem = index === items.length - 1;
+
+        return (
+          <React.Fragment key={item.key}>
+            <DropDownItem item={item} />
+            {!isLastItem && (
+              <div className="rl-h-px rl-bg-neutral-10" />
+            )}
+          </React.Fragment>
+        );
+      })}
+    </div>
+  );
+
+  // If no trigger provided, render dropdown content directly
+  if (!trigger) {
+    return dropdownRender();
+  }
+
+  return (
+    <AntDropdown
+      {...antdProps}
+      dropdownRender={dropdownRender}
+      trigger={['click']}
+      autoAdjustOverflow={false}
+      placement="bottomLeft"
+      getPopupContainer={(trigger) => trigger.parentElement || document.body}
+    >
+      <span className="rl-inline-block rl-cursor-pointer">
+        {trigger}
+      </span>
+    </AntDropdown>
+  );
+};
 
 DropDown.displayName = 'RLDropDown';

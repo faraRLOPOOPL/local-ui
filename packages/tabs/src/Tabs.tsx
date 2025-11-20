@@ -69,7 +69,7 @@ export const TabsMenu = React.forwardRef<HTMLDivElement, TabsMenuProps>(
       <div
         ref={ref}
         className={cn(
-          'rl-inline-flex rl-gap-2 rl-p-1 rl-bg-disable-bkg rl-rounded-lg',
+          'rl-inline-flex rl-gap-2 rl-p-1 rl-bg-opacity-05 rl-rounded-lg',
           className
         )}
       >

@@ -23,9 +23,9 @@ export interface CheckboxProps {
 /**
  * Checkbox компонент
  *
- * Размеры пикера:
- * - m: 24x24px
- * - s: 20x20px
+ * Размеры пикера (с учетом border):
+ * - m: 20x20px
+ * - s: 16x16px
  *
  * Состояния пикера:
  * - Default: border neutral-50, bg white, border-radius 4px
@@ -37,8 +37,10 @@ export interface CheckboxProps {
  * Текст:
  * - Основной: neutral-80
  * - Caption: neutral-50
- * - M size: text1-l (16px/24px), caption1 (12px/16px)
- * - S size: text2-l (14px/20px), text2-s (14px/20px)
+ * - M size: text1-l (font-size + line-height)
+ * - S size: text2-l font-size, text1-s line-height
+ * - Caption M: caption1 (12px/16px)
+ * - Caption S: text2-s (14px/20px)
  * - Disabled: основной - disable-text, caption - disable-bkg
  */
 export const Checkbox = React.forwardRef<HTMLLabelElement, CheckboxProps>(
@@ -58,101 +60,110 @@ export const Checkbox = React.forwardRef<HTMLLabelElement, CheckboxProps>(
     ref
   ) {
     const [hovered, setHovered] = React.useState(false);
+    const checkboxId = React.useId();
     const isChecked = indeterminate || checked;
+    const isMedium = size === 'm';
 
-    // Размеры чекбокса
-    const pickerSize = size === 'm' ? 24 : 20;
-    const iconSize = size === 'm' ? 14 : 12;
-
-    // Определяем иконку
     const CheckIcon = indeterminate ? MinusOutlined : iconType === 'minus' ? MinusOutlined : CheckOutlined;
+
+    // M: 20x20px, S: 16x16px (ИТОГО с border 2px)
+    // Внутренний размер: M: 20-4=16px, S: 16-4=12px
+    const pickerSize = isMedium ? 'rl-w-[20px] rl-h-[20px]' : 'rl-w-[16px] rl-h-[16px]';
+
+    // Круг: M: 40x40px, S: 32x32px
+    // Отступ: M: (40-20)/2 = 10px, S: (32-16)/2 = 8px
+    const hoverCircleSize = isMedium ? 'rl-w-10 rl-h-10' : 'rl-w-8 rl-h-8';
+    const hoverCircleOffset = isMedium ? '-rl-top-2.5 -rl-left-2.5' : '-rl-top-2 -rl-left-2';
+
+    const iconSize = isMedium ? 'rl-text-sm' : 'rl-text-xs';
+
+    // Размеры текста
+    const labelSize = isMedium ? 'rl-text-text1-l' : 'rl-text-text2-l [line-height:var(--rl-line-text1-s)]';
+    const captionSize = isMedium ? 'rl-text-caption1' : 'rl-text-caption2';
 
     return (
       <label
         ref={ref}
+        htmlFor={checkboxId}
         className={cn(
-          'rl-inline-flex rl-items-start rl-cursor-pointer rl-select-none rl-font-rubik',
+          'rl-inline-flex rl-items-start rl-gap-2 rl-cursor-pointer rl-select-none rl-font-rubik',
           disabled && 'rl-cursor-not-allowed',
           className
         )}
-        style={{ gap: '8px' }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
-        <div className="rl-relative rl-flex-shrink-0">
+        {/* Чекбокс пикер */}
+        <div className="rl-relative rl-flex-shrink-0 rl-mt-0.5">
           {/* Hover круг */}
-          {hovered && !disabled && (
-            <div
-              className="rl-absolute rl-rounded-full rl-transition-opacity rl-pointer-events-none"
-              style={{
-                width: `${pickerSize + 4 + 20}px`,
-                height: `${pickerSize + 4 + 20}px`,
-                top: -11,
-                left: -11,
-                backgroundColor: 'var(--rl-color-opacity-05)',
-              }}
-            />
-          )}
+          <div
+            className={cn(
+              'rl-absolute rl-rounded-full rl-pointer-events-none rl-transition-opacity rl-duration-200',
+              'rl-bg-opacity-05',
+              hoverCircleSize,
+              hoverCircleOffset,
+              hovered && !disabled ? 'rl-opacity-100' : 'rl-opacity-0'
+            )}
+          />
 
-          {/* Чекбокс пикер */}
+          {/* Скрытый input */}
           <input
+            id={checkboxId}
             type="checkbox"
             checked={checked}
             disabled={disabled}
             onChange={(e) => onChange?.(e.target.checked)}
-            className="rl-sr-only"
-            style={{ position: 'absolute', opacity: 0, width: 0, height: 0 }}
+            className="rl-sr-only rl-absolute rl-opacity-0 rl-w-0 rl-h-0"
           />
+
+          {/* Визуальный чекбокс */}
           <div
             role="presentation"
             aria-hidden="true"
-            className={cn(
-              'rl-relative rl-flex rl-items-center rl-justify-center rl-transition-all rl-duration-200 rl-pointer-events-none',
-              disabled
-                ? isChecked
-                  ? 'rl-bg-indigo-40'
-                  : 'rl-bg-white'
-                : isChecked
-                ? 'rl-bg-indigo-60'
-                : 'rl-bg-white'
-            )}
             style={{
-              width: `${pickerSize}px`,
-              height: `${pickerSize}px`,
-              borderRadius: '4px',
-              border: disabled
-                ? isChecked
-                  ? '2px solid var(--rl-color-indigo-40)'
-                  : '2px solid var(--rl-color-disable-bkg)'
-                : isChecked
-                ? '2px solid var(--rl-color-indigo-60)'
-                : hovered
-                ? '2px solid var(--rl-color-indigo-60)'
-                : '2px solid var(--rl-color-neutral-50)',
+              border: disabled && isChecked ? '2px solid var(--rl-color-indigo-40)' :
+                      disabled && !isChecked ? '2px solid var(--rl-color-disable-bkg)' :
+                      !disabled && isChecked ? '2px solid var(--rl-color-indigo-60)' :
+                      !disabled && !isChecked && hovered ? '2px solid var(--rl-color-indigo-60)' :
+                      '2px solid var(--rl-color-neutral-50)'
             }}
+            className={cn(
+              'rl-relative rl-flex rl-items-center rl-justify-center rl-rounded rl-transition-all rl-duration-200 rl-pointer-events-none',
+              pickerSize,
+              // Disabled checked
+              disabled && isChecked && 'rl-bg-indigo-40',
+              // Disabled empty
+              disabled && !isChecked && 'rl-bg-white',
+              // Active (checked)
+              !disabled && isChecked && 'rl-bg-indigo-60',
+              // Hover
+              !disabled && !isChecked && hovered && 'rl-bg-white',
+              // Default
+              !disabled && !isChecked && !hovered && 'rl-bg-white'
+            )}
           >
             {isChecked && (
               <CheckIcon
-                className={cn(disabled ? 'rl-text-staticwhite-10' : 'rl-text-white')}
-                style={{ fontSize: `${iconSize}px`, fontWeight: 'bold', strokeWidth: 2 }}
+                className={cn(
+                  iconSize,
+                  'rl-font-bold',
+                  disabled ? 'rl-text-staticwhite-10' : 'rl-text-white'
+                )}
               />
             )}
           </div>
         </div>
 
-        {/* Текст и caption */}
+        {/* Текст */}
         {(label || caption) && (
           <div className="rl-flex-1 rl-flex rl-flex-col">
             {label && (
               <div
                 className={cn(
                   'rl-font-rubik',
+                  labelSize,
                   disabled ? 'rl-text-disable-text' : 'rl-text-neutral-80'
                 )}
-                style={{
-                  fontSize: size === 'm' ? 'var(--rl-font-size-text1-l)' : 'var(--rl-font-size-text2-l)',
-                  lineHeight: size === 'm' ? 'var(--rl-line-text1-l)' : 'var(--rl-line-text1-s)',
-                }}
               >
                 {label}
               </div>
@@ -160,13 +171,10 @@ export const Checkbox = React.forwardRef<HTMLLabelElement, CheckboxProps>(
             {caption && (
               <div
                 className={cn(
-                  'rl-font-rubik',
+                  'rl-font-rubik rl-font-normal',
+                  captionSize,
                   disabled ? 'rl-text-disable-bkg' : 'rl-text-neutral-50'
                 )}
-                style={{
-                  fontSize: size === 'm' ? 'var(--rl-font-size-caption1)' : 'var(--rl-font-size-text2-s)',
-                  lineHeight: size === 'm' ? 'var(--rl-line-caption1)' : 'var(--rl-line-text2-s)',
-                }}
               >
                 {caption}
               </div>

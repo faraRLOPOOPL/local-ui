@@ -93,17 +93,17 @@ export const Input = React.forwardRef<InputRef, RLInputProps>(function RLInput(
 
       <div
         className={cn(
-          'rl-flex rl-items-center rl-rounded-rl rl-bg-neutral-0 rl-overflow-hidden',
-          'rl-border rl-border-solid',
-          error ? 'rl-border-error-60' : 'rl-border-neutral-20',
-          'hover:rl-cursor-text focus-within:rl-border-electric-50 focus-within:rl-shadow-none',
+          'rl-flex rl-items-center rl-rounded-12 rl-overflow-hidden',
+          disabled ? 'rl-bg-disable-bkg rl-border-0' : 'rl-bg-neutral-0 rl-border rl-border-solid',
+          !disabled && (error ? 'rl-border-error-60' : 'rl-border-neutral-20'),
+          !disabled && 'hover:rl-cursor-text focus-within:rl-border-2 focus-within:rl-border-electric-50 focus-within:rl-shadow-none',
           sz.wrapper, sz.gap,
-          disabled && 'rl-opacity-60 rl-pointer-events-none',
+          disabled && 'rl-pointer-events-none',
           className
         )}
       >
         {left && (
-          <span className={cn('rl-inline-flex rl-items-center rl-text-neutral-60', sz.icon)} aria-hidden>
+          <span className={cn('rl-icon rl-inline-flex rl-items-center rl-text-neutral-60', sz.icon)} aria-hidden>
             {icon}
           </span>
         )}
@@ -119,7 +119,7 @@ export const Input = React.forwardRef<InputRef, RLInputProps>(function RLInput(
             'rl-bg-transparent rl-border-0 rl-rounded-none rl-p-0',
             'rl-shadow-none focus:rl-shadow-none focus-visible:rl-shadow-none',
             'rl-outline-none focus:rl-outline-none focus-visible:rl-outline-none',
-            'rl-text-neutral-90 placeholder:rl-text-neutral-50',
+            disabled ? 'rl-text-disable-text placeholder:rl-text-disable-text' : 'rl-text-neutral-90 placeholder:rl-text-neutral-50',
             sz.input,
             inputClassName
           )}

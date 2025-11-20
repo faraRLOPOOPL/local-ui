@@ -3,7 +3,7 @@ import { ThemeSwitch } from './index';
 import { useState } from 'react';
 
 // Токены подключите один раз в preview.ts сторибука / приложении:
-// import '@realist-ui/tokens/style.css';
+// import '@realist-ui/design-system/tokens';
 
 const meta: Meta<typeof ThemeSwitch> = {
   title: 'Components/ThemeSwitch',

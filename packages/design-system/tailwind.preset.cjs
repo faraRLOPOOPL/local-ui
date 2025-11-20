@@ -1,5 +1,5 @@
 /**
- * Shared Tailwind preset для @realist-ui
+ * Shared Tailwind preset для @local-ui/design-system
  * Single source of truth для всех дизайн-токенов
  */
 module.exports = {
@@ -135,16 +135,38 @@ module.exports = {
         text: 'var(--rl-color-disable)',
       },
 
+      // Opacity
+      opacity: {
+        '05': 'var(--rl-color-opacity-05)',
+        10: 'var(--rl-color-opacity-10)',
+        20: 'var(--rl-color-opacity-20)',
+        30: 'var(--rl-color-opacity-30)',
+        40: 'var(--rl-color-opacity-40)',
+        50: 'var(--rl-color-opacity-50)',
+        60: 'var(--rl-color-opacity-60)',
+        70: 'var(--rl-color-opacity-70)',
+        80: 'var(--rl-color-opacity-80)',
+        90: 'var(--rl-color-opacity-90)',
+      },
+
       // White
       white: 'rgb(255, 255, 255)',
     },
 
     extend: {
       fontFamily: {
-        rubik: 'var(--rl-font)',   
+        rubik: 'var(--rl-font)',
       },
       borderRadius: {
         rl: '12px',
+        '4': 'var(--rl-radius-4)',
+        '6': 'var(--rl-radius-6)',
+        '8': 'var(--rl-radius-8)',
+        '10': 'var(--rl-radius-10)',
+        '12': 'var(--rl-radius-12)',
+        '14': 'var(--rl-radius-14)',
+        '24': 'var(--rl-radius-24)',
+        '32': 'var(--rl-radius-32)',
       },
       fontSize: {
         // Headlines

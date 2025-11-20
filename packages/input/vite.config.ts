@@ -18,7 +18,15 @@ export default defineConfig({
       name: 'RealistUIInput',
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'react/jsx-runtime', 'antd', '@ant-design/icons']
+      external: [
+        'react',
+        'react-dom',
+        'react/jsx-runtime',
+        'antd',
+        '@ant-design/icons',
+        '@realist-ui/design-system',
+        '@realist-ui/design-system/icons'
+      ]
     }
   }
 });

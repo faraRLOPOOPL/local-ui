@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Button } from '@realist-ui/button';
 
 // В preview.ts сторибука подключите токены один раз:
-// import '@realist-ui/tokens/style.css';
+// import '@realist-ui/design-system/tokens';
 
 const meta: Meta<typeof Modal> = {
   title: 'Components/Modal',

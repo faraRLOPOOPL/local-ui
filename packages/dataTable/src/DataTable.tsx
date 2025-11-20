@@ -1,9 +1,8 @@
 import { forwardRef } from 'react';
 import { AllCommunityModule, ModuleRegistry, themeQuartz, iconSetAlpine } from "ag-grid-community";
-import { AgGridReact, AgGridReactProps } from 'ag-grid-react';
+import { AgGridReact, type AgGridReactProps } from 'ag-grid-react';
+import { AllEnterpriseModule } from 'ag-grid-enterprise';
 import { AG_GRID_LOCALE_RU } from './locales/ru';
-
-import "./styles.css";
 
 interface DataTableProps extends AgGridReactProps {
   locale?: 'ru' | 'en';
@@ -16,7 +15,7 @@ const thene = themeQuartz
   })
   .withPart(iconSetAlpine)
 
-ModuleRegistry.registerModules([AllCommunityModule]);
+ModuleRegistry.registerModules([AllCommunityModule, AllEnterpriseModule]);
 
 export const DataTable = forwardRef<AgGridReact, DataTableProps>(({ locale = 'ru', ...props }, ref) => {
 

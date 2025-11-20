@@ -32,7 +32,7 @@
     "react-dom": "^18 || ^19"
   },
   "devDependencies": {
-    "@realist-ui/tokens": "workspace:*",
+    "@realist-ui/design-system": "workspace:*",
     "@vitejs/plugin-react": "^4",
     "autoprefixer": "^10",
     "postcss": "^8",

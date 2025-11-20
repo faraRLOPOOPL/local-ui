@@ -11,7 +11,12 @@ interface DataTableProps extends AgGridReactProps {
 const thene = themeQuartz
   .withParams({
     spacing: 12,
-    fontFamily: "var(--rl-font)"
+    fontFamily: "var(--rl-font)",
+    headerBackgroundColor: "var(--rl-color-neutral-05)",
+    headerTextColor: "var(--rl-color-neutral-70)",
+    headerFontSize: "var(--rl-font-size-text2-s)",
+    headerFontWeight: 500,
+    headerHeight: 40,
   })
   .withPart(iconSetAlpine)
 

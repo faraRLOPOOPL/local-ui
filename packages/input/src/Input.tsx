@@ -113,7 +113,7 @@ export const Input = React.forwardRef<InputRef, RLInputProps>(function RLInput(
           id={inputId}
           ref={ref}
           disabled={disabled}
-          bordered={false}
+          variant="borderless"
           className={cn(
             'rl-flex-1 rl-h-full rl-min-w-0',
             'rl-bg-transparent rl-border-0 rl-rounded-none rl-p-0',

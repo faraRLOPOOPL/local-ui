@@ -1,4 +1,3 @@
-import React from 'react';
 import { Tag, type TagProps } from 'antd';
 
 const cn = (...a: Array<string | false | null | undefined>) => a.filter(Boolean).join(' ');

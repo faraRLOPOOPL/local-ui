@@ -17,6 +17,8 @@ export {
   CaretLeft,
   CaretUp,
   CaretDown,
+  CaretDoubleRight,
+  CaretDoubleLeft,
 
   // Common Actions
   MagnifyingGlass,
@@ -31,6 +33,8 @@ export {
   // Interface
   DotsThree,
   DotsThreeVertical,
+  DotsThreeOutline,
+  DotsThreeOutlineVertical,
   List,
   Gear,
   Bell,

@@ -12,6 +12,8 @@
     "fix": "biome check --write .",
     "build": "pnpm -r run build",
     "build:storybook": "storybook build",
+    "serve:storybook": "serve -s storybook-static -l 6006 --single --no-clipboard",
+    "build:share": "pnpm build:storybook && concurrently -n \"SERVER,TUNNEL\" -c \"blue,green\" \"npx http-server storybook-static -p 6006 -c-1 --cors -a 0.0.0.0\" \"npx cloudflared tunnel --url http://localhost:6006\"",
     "pack:all": "node scripts/pack-all.js"
   },
   "keywords": [],
@@ -40,6 +42,8 @@
     "tailwindcss": "3.4.13",
     "typescript": "^5.9.3",
     "vite": "^7.1.9",
+    "concurrently": "^9.1.0",
+    "serve": "^14.2.4",
     "vite-plugin-dts": "^4.5.4"
   }
 }
